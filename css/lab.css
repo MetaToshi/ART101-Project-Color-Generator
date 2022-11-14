@@ -1,22 +1,19 @@
-h1
-{
+h1 {
+  font-family: "Lucida Console", "Courier New", monospace;
+
+}
+
+h2 {
   font-family: "Lucida Console", "Courier New", monospace;
 }
 
-h2
-{
-  font-family: "Lucida Console", "Courier New", monospace;
-}
-
-#outputBlock
-{
+#outputBlock {
   border: 2px solid dodgerblue;
   padding: 5px 5px;
   margin: 10px 3px;
 }
 
-#colors
-{
+#colors {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -26,19 +23,40 @@ h2
   text-align: center;
 }
 
-#colors li
-{
+/* Animated Button - Pressed Effect*/
+
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666
+  tranform: translateY(4px);
+}
+
+
+#colors li {
   padding: 8px 16px;
   border-bottom: 1px solid black;
 }
 
-#colors li:last-child
-{
+#colors li:last-child {
   border-bottom: none;
 }
 
-#moveElementButton
-{
+#moveElementButton {
   font-size: 15px;
   padding: 12px 20px;
   color: black;
@@ -46,25 +64,21 @@ h2
   border: none;
 }
 
-.bodyParagraphs
-{
+.bodyParagraphs {
   border: 3px solid tomato;
   padding: 15px 20px;
 }
 
-.bodyParagraphs h2
-{
+.bodyParagraphs h2 {
   margin: 15px 0px;
 }
 
-#photo
-{
+#photo {
   width: 20%;
   float: right;
 }
 
-.clearfix
-{
+.clearfix {
   border: 2px solid gold;
   padding: 5px 5px;
   margin: 10px 3px;
