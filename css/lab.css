@@ -1,12 +1,21 @@
-h1 {
+h1, h2  {
   font-family: "Lucida Console", "Courier New", monospace;
 
 }
 
-h2 {
-  font-family: "Lucida Console", "Courier New", monospace;
+p {
+  font-family: monospace;
+  font-size: 150%;
+  text-indent: 20px;
+  margin-left: auto;
+  text-align: center;
 }
 
+body {
+  /* background-color: lightblue; */
+}
+
+/* I believe this is the button */
 #outputBlock {
   border: 2px solid dodgerblue;
   padding: 5px 5px;
@@ -25,7 +34,16 @@ h2 {
 
 /* Animated Button - Pressed Effect*/
 
-.button {
+#colors li {
+  padding: 8px 16px;
+  border-bottom: 1px solid black;
+}
+
+#colors li:last-child {
+  border-bottom: none;
+}
+
+#colorButton {
   padding: 15px 25px;
   font-size: 24px;
   text-align: center;
@@ -46,24 +64,6 @@ h2 {
   tranform: translateY(4px);
 }
 
-
-#colors li {
-  padding: 8px 16px;
-  border-bottom: 1px solid black;
-}
-
-#colors li:last-child {
-  border-bottom: none;
-}
-
-#moveElementButton {
-  font-size: 15px;
-  padding: 12px 20px;
-  color: black;
-  background-color: CornflowerBlue;
-  border: none;
-}
-
 .bodyParagraphs {
   border: 3px solid tomato;
   padding: 15px 20px;
@@ -73,8 +73,9 @@ h2 {
   margin: 15px 0px;
 }
 
-#photo {
-  width: 20%;
+/* Roy Avatar */
+#roy {
+  width: 30%;
   float: right;
 }
 

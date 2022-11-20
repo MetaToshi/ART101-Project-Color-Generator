@@ -1,12 +1,6 @@
-/*
-Authors: Wang Lao
-Class: ART 101
-*/
-
-var outputEl = document.getElementById("output");
-var outputButton = document.getElementById("moveElementButton");
-var colorsEl = document.getElementById("colors");
-var colors_Num = (colorsEl.childNodes.length-1)/2;
+var colorButton = $("#colorButton")[0];
+var colorsBlocks = $("#colors")[0];
+var colors_Num = (colorsBlocks.childNodes.length-1)/2;
 
 var r, g, b, a;
 var colorResult;
@@ -14,51 +8,79 @@ var colorResult;
 var clickCount = 0;
 
 var testClickCount = 0;
-var imageButton = document.getElementById("imageButton");
-var testImage = document.getElementById("photo");
+var imageButton = $("#imageButton")[0];
+var royImage = $("#roy")[0];
 
-outputButton.onclick = function()
+colorButton.onclick = function()
 {
-  /*
-  console.log("--------------------Phase 1--------------------");
-  console.log("colors: ", colorsEl);
-  console.log("childNodes: ", colorsEl.childNodes);
-  console.log("length: ", colorsEl.childNodes.length);
-  console.log("The number of colors = ", (colorsEl.childNodes.length-1)/2);
-
-  console.log("--------------------Phase 2--------------------");
-
-  console.log("First child is: ", colorsEl.childNodes[1], ". Let's change its background color!");
-  colorsEl.childNodes[1].style.backgroundColor = "blue";
-
-  console.log("Now let's try to change the color with number!");
-  colorsEl.childNodes[1].style.backgroundColor = "rgba(255, 34, 48, 0.8)";
-
-  console.log("--------------------Phase 3--------------------");
-
-  console.log("Finally, let's try change the color using a function!");
-  getRandomColor(0);
-
-  */
-
-  console.log("--------------------Phase 4--------------------");
-
-  //console.log("Final test for all colors!")
   clickCount++;
-  console.log("clickCount: ", clickCount);
   for(let i = 0; i < colors_Num; i++)
   {
     getRandomColor(i);
   }
+  console.log("clickCount: " + clickCount);
 }
 
+//Add event listener to all the colors. Copy the color info to the clipboard.
+$("#color1").click(function(){
+  copyColor("#color1");
+});
+
+$("#color2").click(function(){
+  copyColor("#color2");
+});
+
+$("#color3").click(function(){
+  copyColor("#color3");
+});
+
+$("#color4").click(function(){
+  copyColor("#color4");
+});
+
+$("#color5").click(function(){
+  copyColor("#color5");
+});
+
+//Add event listener to the test imageButton to change image every time you click it
 imageButton.onclick = function()
 {
   changeImage();
+  // changeMoodBackground();
 }
 
+// Change background depending on Roy's mood
+/**function changeMoodBackground(x){
+  document.body.style.background = x;
+}
+    if (clickCount < 6) {
+      changeMoodBackground('yellow');
+}
+    else if (clickCount >= 6 && clickCount <= 12) {
+      changeMoodBackground('blue');
+    }
+    else {
+      changeMoodBackground('red');
+    } **/
+
+//Generate random colors as the background color
 function getRandomColor(x)
 {
+  //Clickcount & Change Roy image
+  if(clickCount < 6)
+  {
+    royImage.src = "img/roy temp hap.png";
+  }
+  else if(clickCount >= 6 && clickCount <= 12)
+  {
+    royImage.src = "img/roy temp sad.png";
+  }
+  else
+  {
+    royImage.src = "img/roy temp angy.png";
+  }
+
+  //Generate colors
   colorResult = "rgba(";
   for(let i = 0; i < 4; i++)
   {
@@ -73,24 +95,34 @@ function getRandomColor(x)
       colorResult += ")"
     }
   }
-  console.log(colorResult);
-  colorsEl.childNodes[2*x+1].style.backgroundColor = colorResult;
+  colorsBlocks.childNodes[2*x+1].style.backgroundColor = colorResult;
+  console.log("colorResult: " + colorResult);
   return;
 }
 
+//Copy the color to the clipboard
+function copyColor(colorId)
+{
+  var colorInfo = $(colorId)[0].style.backgroundColor;
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(colorInfo);
+  // Alert the copied text
+  if(colorInfo.length != 0)
+  {
+    console.log("Copied the color: " + colorInfo);
+  }
+}
+
+//It's just a test function for changing image
 function changeImage()
 {
   testClickCount++;
   if(testClickCount % 2 == 0)
   {
-    console.log("testClickCount: ", testClickCount % 2);
-    console.log("testImage: ", testImage);
-    testImage.src = "img/photo.jpg";
+    royImage.src = "img/roy temp hap.png";
   }
   else
   {
-    console.log("testClickCount: ", testClickCount % 2);
-    console.log("testImage: ", testImage);
-    testImage.src = "img/photo2.jpg";
+    royImage.src = "img/roy temp sad.png";
   }
 }

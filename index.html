@@ -2,42 +2,50 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Color Palette Generator</title>
-	<script src = "js/lab.js" defer></script>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	<script src="js/lab.js" defer></script>
 	<link rel="stylesheet" type="text/css" href="css/lab.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+
 </head>
+
 <body>
 	<h1>Color Palette Generator</h1>
 
 	<hr>
 
-	<div class = "bodyParagraphs">
+	<div class="w3-padding-32 w3-white w3-circle w3-center">
+		<h1>Roy Quote hehe haha</h1>
+	</div>
 
-		<div id = "outputBlock">
-			<h2>Script Output</h2>
+	<div class="bodyParagraphs">
 
-			<img id = "photo" src = "img/photo.jpg">
+		<img id="roy" src="img/roy temp hap.png">
 
-			<div id = "output"></div>
-			<ul id="colors">
-				<li>Color 1</li>
-				<li>Color 2</li>
-				<li>Color 3</li>
-				<li>Color 4</li>
-				<li>Color 5</li>
-			</ul>
+		<div id="output"></div>
+		<ul id="colors">
+			<li id = "color1">Color 1</li>
+			<li id = "color2">Color 2</li>
+			<li id = "color3">Color 3</li>
+			<li id = "color4">Color 4</li>
+			<li id = "color5">Color 5</li>
+		</ul>
 
-			<br>
+		<br>
 
-			<button class="button">Click me to do something!</button>
+		<button id="colorButton">Click me to do something!</button>
 
-			<br>
-      <br>
+		<br>
+		<br>
 
-			<button type = "button" id = "imageButton">Change the image</button>
-		</div>
+		<button type="button" id="imageButton">Change the image</button>
+
 	</div>
 
 </body>
+
 </html>
