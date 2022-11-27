@@ -50,7 +50,7 @@ imageButton.onclick = function()
 }
 
 // Change background depending on Roy's mood
-/**function changeMoodBackground(x){
+/*function changeMoodBackground(x){
   document.body.style.background = x;
 }
     if (clickCount < 6) {
@@ -61,7 +61,7 @@ imageButton.onclick = function()
     }
     else {
       changeMoodBackground('red');
-    } **/
+    } */
 
 //Generate random colors as the background color
 function getRandomColor(x)
@@ -69,15 +69,23 @@ function getRandomColor(x)
   //Clickcount & Change Roy image
   if(clickCount < 6)
   {
-    royImage.src = "img/roy temp hap.png";
+    royImage.src = "img/normal happy.png";
   }
   else if(clickCount >= 6 && clickCount <= 12)
   {
-    royImage.src = "img/roy temp sad.png";
+    royImage.src = "img/standing roy hehe.png";
+  }
+  else if(clickCount >= 12 && clickCount <= 18)
+  {
+    royImage.src = "img/frustrated.png"
+    $("#roy").animate({
+      right: '1000px',
+      duartion: 5
+    })
   }
   else
   {
-    royImage.src = "img/roy temp angy.png";
+    royImage.src = "img/very angry.png";
   }
 
   //Generate colors
@@ -106,7 +114,7 @@ function copyColor(colorId)
   var colorInfo = $(colorId)[0].style.backgroundColor;
   // Copy the text inside the text field
   navigator.clipboard.writeText(colorInfo);
-  // Alert the copied text
+  // Print the copied color
   if(colorInfo.length != 0)
   {
     console.log("Copied the color: " + colorInfo);
@@ -119,7 +127,7 @@ function changeImage()
   testClickCount++;
   if(testClickCount % 2 == 0)
   {
-    royImage.src = "img/roy temp hap.png";
+    royImage.src = "img/normal happy.png";
   }
   else
   {
