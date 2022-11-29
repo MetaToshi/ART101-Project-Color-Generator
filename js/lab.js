@@ -7,8 +7,6 @@ var colorResult;
 
 var clickCount = 0;
 
-var testClickCount = 0;
-var imageButton = $("#imageButton")[0];
 var royImage = $("#roy")[0];
 
 colorButton.onclick = function()
@@ -18,6 +16,15 @@ colorButton.onclick = function()
   {
     getRandomColor(i);
   }
+
+  var ifSaySomethingNum = Math.floor(Math.random() * 10);
+  console.log("ifSaySomethingNum: ", ifSaySomethingNum);
+  if(ifSaySomethingNum < 8)
+  {
+    console.log("Quote changing functions triggered!");
+    saySomething(clickCount);
+  }
+
   console.log("clickCount: " + clickCount);
 }
 
@@ -41,13 +48,6 @@ $("#color4").click(function(){
 $("#color5").click(function(){
   copyColor("#color5");
 });
-
-//Add event listener to the test imageButton to change image every time you click it
-imageButton.onclick = function()
-{
-  changeImage();
-  // changeMoodBackground();
-}
 
 // Change background depending on Roy's mood
 /*function changeMoodBackground(x){
@@ -75,7 +75,7 @@ function getRandomColor(x)
   {
     royImage.src = "img/standing roy hehe.png";
   }
-  else if(clickCount >= 12 && clickCount <= 18)
+  else if(clickCount > 12 && clickCount <= 18)
   {
     royImage.src = "img/frustrated.png"
     $("#roy").animate({
@@ -83,7 +83,7 @@ function getRandomColor(x)
       duartion: 5
     })
   }
-  else
+  else //When clickCount > 18
   {
     royImage.src = "img/very angry.png";
   }
@@ -121,16 +121,64 @@ function copyColor(colorId)
   }
 }
 
-//It's just a test function for changing image
-function changeImage()
+//---------Text Box Changing Test Area------------------
+var speeds =
 {
-  testClickCount++;
-  if(testClickCount % 2 == 0)
+  slow: 120,
+  normal: 700,
+  fast: 300
+}
+
+var textLines =
+{
+  happyQuotes:[
+    { string: "Roy Happy Quote 1", speed: speeds.normal},
+    { string: "Roy Happy Quote 2", speed: speeds.slow},
+    { string: "Roy Happy Quote 3", speed: speeds.fast}],
+  heheQuotes: [
+    { string: "Roy Hehe Quote 1", speed: speeds.normal},
+    { string: "Roy Hehe Quote 2", speed: speeds.normal},
+    { string: "Roy Hehe Quote 3", speed: speeds.normal}],
+  frustratedQuotes: [
+    { string: "Roy frustrated Quote 1", speed: speeds.normal},
+    { string: "Roy frustrated Quote 2", speed: speeds.normal},
+    { string: "Roy frustrated Quote 3", speed: speeds.normal}],
+  angryQuotes: [
+    { string: "Roy angry Quote 1", speed: speeds.normal},
+    { string: "Roy angry Quote 2", speed: speeds.normal},
+    { string: "Roy angry Quote 3", speed: speeds.normal}]
+}
+
+function saySomething(clickCount)
+{
+  var randomQuote; //Used to store the random quote string
+
+  if(clickCount < 6) //Happy Roy says something
   {
-    royImage.src = "img/normal happy.png";
+    var randomNum = Math.floor(Math.random() * textLines.happyQuotes.length);
+    randomQuote = textLines.happyQuotes[randomNum].string;
+    $("#quote").html(randomQuote);
+    console.log(randomQuote);
   }
-  else
+  else if(clickCount >= 6 && clickCount <= 12) //Hehe Roy says something
   {
-    royImage.src = "img/roy temp sad.png";
+    var randomNum = Math.floor(Math.random() * textLines.heheQuotes.length);
+    randomQuote = textLines.heheQuotes[randomNum].string;
+    $("#quote").html(randomQuote);
+    console.log(randomQuote);
+  }
+  else if(clickCount > 12 && clickCount <= 18) //Frustrated Roy says something
+  {
+    var randomNum = Math.floor(Math.random() * textLines.frustratedQuotes.length);
+    randomQuote = textLines.frustratedQuotes[randomNum].string;
+    $("#quote").html(randomQuote);
+    console.log(randomQuote);
+  }
+  else //Angry Roy says something
+  {
+    var randomNum = Math.floor(Math.random() * textLines.angryQuotes.length);
+    randomQuote = textLines.angryQuotes[randomNum].string;
+    $("#quote").html(randomQuote);
+    console.log(randomQuote);
   }
 }
