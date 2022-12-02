@@ -1,8 +1,8 @@
-var colorButton = $("#colorButton")[0];
-var colorsBlocks = $("#colors")[0];
-var colors_Num = (colorsBlocks.childNodes.length-1)/2;
+var colorButton = $("#colorButton")[0]; //The button used to generate colors
+var colorsBlocks = $("#colors")[0]; //The color divs which show the random colors
+var colors_Num = (colorsBlocks.childNodes.length-1)/2; //How many colors are generated
 
-var r, g, b, a;
+var h, s, l;
 var colorResult;
 
 var clickCount = 0;
@@ -15,10 +15,16 @@ colorButton.onclick = function()
   for(let i = 0; i < colors_Num; i++)
   {
     getRandomColor(i);
+    royImageChange();
   }
+
+  //Using a random number to determine if Roy says something this time
+
+  //ifSaySomethingNum represents the likelihood that Roy says something (eg. When ifSaySomethingNum is 8, it means the likelihood is 80%)
 
   var ifSaySomethingNum = Math.floor(Math.random() * 10);
   console.log("ifSaySomethingNum: ", ifSaySomethingNum);
+
   if(ifSaySomethingNum < 8)
   {
     console.log("Quote changing functions triggered!");
@@ -26,6 +32,8 @@ colorButton.onclick = function()
   }
 
   console.log("clickCount: " + clickCount);
+
+  console.log("-----------------------");
 }
 
 //Add event listener to all the colors. Copy the color info to the clipboard.
@@ -63,8 +71,7 @@ $("#color5").click(function(){
       changeMoodBackground('red');
     } */
 
-//Generate random colors as the background color
-function getRandomColor(x)
+function royImageChange()
 {
   //Clickcount & Change Roy image
   if(clickCount < 6)
@@ -77,35 +84,136 @@ function getRandomColor(x)
   }
   else if(clickCount > 12 && clickCount <= 18)
   {
-    royImage.src = "img/frustrated.png"
+    royImage.src = "img/frustrated.png";
     $("#roy").animate({
       right: '1000px',
       duartion: 5
-    })
+    });
   }
   else //When clickCount > 18
   {
     royImage.src = "img/very angry.png";
   }
+}
 
+//Change Roy's image & Generate random colors in color divs
+function getRandomColor(index) //Index means the index of colors
+{
   //Generate colors
-  colorResult = "rgba(";
-  for(let i = 0; i < 4; i++)
+  //The first base color is randomly generated
+  switch(index)
   {
-    if(i < 3)
-    {
-      colorResult += Math.floor(Math.random() * 256).toString();
-      colorResult += ", "
-    }
-    else
-    {
-      colorResult += (Math.random() * 0.9 + 0.1).toString();
-      colorResult += ")"
-    }
+    case 0: //Randomly generate the first color as base color
+
+      colorResult = "HSL(";
+      for(let i = 0; i < 3; i++)
+      {
+        if(i < 1)
+        {
+          //hue value will be 0 ~ 360(included)
+          h = Math.floor(Math.random() * 361);
+          colorResult += h.toString();
+          colorResult += ", "
+        }
+        else if(i < 2)
+        {
+          //saturation will be 30% ~ 80%
+          s = 30 + Math.floor(Math.random() * 61);
+          colorResult += s.toString();
+          colorResult += "%, ";
+        }
+        else
+        {
+          //lightness will be 30% ~ 80%
+          l = 30 + Math.floor(Math.random() * 51);
+          colorResult += l.toString();
+          colorResult += "%)";
+        }
+      }
+      colorsBlocks.childNodes[2 * index + 1].style.backgroundColor = colorResult;
+      console.log("colorResult: " + colorResult);
+      break;
+    case 1: //Scond color with the same hue, darker
+
+      //Add hue
+      var tempColorResult = "HSL(";
+      tempColorResult += h.toString();
+      tempColorResult += ", ";
+
+      //Add saturation
+      tempColorResult += ((s + 10 > 100) ? 100 : s + 10).toString();
+      tempColorResult += "%, ";
+
+      //Add lightness
+      tempColorResult += ((l - 20 < 10) ? 10 : l - 20).toString();
+      tempColorResult += "%)";
+
+      //Assign the color
+      colorsBlocks.childNodes[2 * index + 1].style.backgroundColor = tempColorResult;
+      console.log("colorResult: " + tempColorResult);
+      break;
+
+    case 2: //Third color with the same hue, lighter
+
+      //Add hue
+      var tempColorResult = "HSL(";
+      tempColorResult += h.toString();
+      tempColorResult += ", ";
+
+      //Add saturation
+      tempColorResult += ((s - 15 < 0) ? 0 : s - 15).toString();
+      tempColorResult += "%, ";
+
+      //Add lightness
+      tempColorResult += ((l + 10 > 100) ? 100 : l + 10).toString();
+      tempColorResult += "%)";
+
+      //Assign the color
+      colorsBlocks.childNodes[2 * index + 1].style.backgroundColor = tempColorResult;
+      console.log("colorResult: " + tempColorResult);
+      break;
+
+    case 3: //Fourth color with different hue
+
+      //Add hue
+      var tempColorResult = "HSL(";
+      tempColorResult += ((h - 170 > 0) ? h - 170 : h + 190).toString();
+      tempColorResult += ", ";
+
+      //Add saturation
+      tempColorResult += ((s + 20 > 100) ? 100 : s + 20).toString();
+      tempColorResult += "%, ";
+
+      //Add lightness
+      tempColorResult += ((l - 20 < 10) ? 10 : l - 20).toString();
+      tempColorResult += "%)";
+
+      //Assign the color
+      colorsBlocks.childNodes[2 * index + 1].style.backgroundColor = tempColorResult;
+      console.log("colorResult: " + tempColorResult);
+      break;
+
+    case 4: //Fifth color with different hue
+
+      //Add hue
+      var tempColorResult = "HSL(";
+      tempColorResult += ((h - 170 > 0) ? h - 170 : h + 190).toString();
+      tempColorResult += ", ";
+
+      //Add saturation
+      tempColorResult += ((s - 7 > 0) ? s - 7 : 0).toString();
+      tempColorResult += "%, ";
+
+      //Add lightness
+      tempColorResult += ((l + 8 > 100) ? 100 : l + 8).toString();
+      tempColorResult += "%)";
+
+      //Assign the color
+      colorsBlocks.childNodes[2 * index + 1].style.backgroundColor = tempColorResult;
+      console.log("colorResult: " + tempColorResult);
+      break;
+
   }
-  colorsBlocks.childNodes[2*x+1].style.backgroundColor = colorResult;
-  console.log("colorResult: " + colorResult);
-  return;
 }
 
 //Copy the color to the clipboard
@@ -149,6 +257,7 @@ var textLines =
     { string: "Roy angry Quote 3", speed: speeds.normal}]
 }
 
+//The function used to change what does Roy say
 function saySomething(clickCount)
 {
   var randomQuote; //Used to store the random quote string
