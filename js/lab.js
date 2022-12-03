@@ -3,9 +3,16 @@ var colorsBlocks = $("#colors")[0]; //The color divs which show the random color
 var colors_Num = (colorsBlocks.childNodes.length-1)/2; //How many colors are generated
 
 // Spotify
-//var client_id = 'CLIENT_ID'; // Your client id
-//var client_secret = 'CLIENT_SECRET'; // Your secret
-//var redirect_uri = 'REDIRECT_URI'; // Your redirect uri
+
+// window.onSpotifyIframeApiReady = (IFrameAPI) => {
+    //let element = document.getElementById('embed-iframe');
+    //let options = {
+      //uri: 'spotify:track:2aKLffhxIXpXyp3GLLTrjD'
+    //};
+    //let callback = (EmbedController) => {};
+    //IFrameAPI.createController(element, options, callback);
+
+
 
 var h, s, l;
 var colorResult;
@@ -88,11 +95,11 @@ function royImageChange()
   }
   else if(clickCount >= 6 && clickCount <= 12)
   {
-    royImage.src = "img/Roy_2_body_open.png";
+    royImage.src = "img/Roy_2_body_animated.gif";
   }
   else if(clickCount > 12 && clickCount <= 18)
   {
-    royImage.src = "img/Roy_3_body_open.png";
+    royImage.src = "img/Roy_3_body_animated.gif";
     //Animate Roy going left - blocking button
     $("#roy").animate({
       right: '65%',
@@ -101,7 +108,7 @@ function royImageChange()
   }
   else //When clickCount > 18
   {
-    royImage.src = "img/Roy_4_body_open.png";
+    royImage.src = "img/Roy_4_body_animated.gif";
     //Animate Roy going Right - quitting his silly lil' job
     $("#roy").animate({
       left: '0%',
@@ -155,11 +162,11 @@ function getRandomColor(index) //Index means the index of colors
       break;
     case 1: //Scond color with the same hue, darker
 
-      //Add noise
-      if(clickCount >= 6)
-      {
-        AddNoise();
-      }
+    //Add noise
+    if(clickCount >= 6)
+    {
+      AddNoise();
+    }
 
       //Add hue
       var tempColorResult = "HSL(";
@@ -167,11 +174,11 @@ function getRandomColor(index) //Index means the index of colors
       tempColorResult += ", ";
 
       //Add saturation
-      tempColorResult += ((tempSat + 10 > 100) ? 100 : tempSat + 10).toString();
+      tempColorResult += ((tempLig - 20 < 10) ? 10 : tempLig - 20).toString();;
       tempColorResult += "%, ";
 
       //Add lightness
-      tempColorResult += ((tempLig - 20 < 10) ? 10 : tempLig - 20).toString();
+      tempColorResult += ((tempLig - 20 < 10) ? 10 : tempLig - 20).toString();;
       tempColorResult += "%)";
 
       //Assign the color
@@ -181,11 +188,11 @@ function getRandomColor(index) //Index means the index of colors
 
     case 2: //Third color with the same hue, lighter
 
-      //Add noise
-      if(clickCount >= 6)
-      {
-        AddNoise();
-      }
+    //Add noise
+    if(clickCount >= 6)
+    {
+      AddNoise();
+    }
 
       //Add hue
       var tempColorResult = "HSL(";
@@ -207,11 +214,11 @@ function getRandomColor(index) //Index means the index of colors
 
     case 3: //Fourth color with different hue, darker
 
-      //Add noise
-      if(clickCount >= 6)
-      {
-        AddNoise();
-      }
+    //Add noise
+    if(clickCount >= 6)
+    {
+      AddNoise();
+    }
 
       //Add hue
       var tempColorResult = "HSL(";
@@ -233,15 +240,15 @@ function getRandomColor(index) //Index means the index of colors
 
     case 4: //Fifth color with different hue, lighter
 
-      //Add noise
-      if(clickCount >= 6)
-      {
-        AddNoise();
-      }
+    //Add noise
+    if(clickCount >= 6)
+    {
+      AddNoise();
+    }
 
       //Add hue
       var tempColorResult = "HSL(";
-      tempColorResult += ((tempHue - 170 > 0) ? tempHue - 170 : tempHue + 190).toString();
+      tempColorResult += ((tempHue - 170 > 0) ? tempHue - 170 : tempHue + 190).toString();;
       tempColorResult += ", ";
 
       //Add saturation
@@ -335,6 +342,7 @@ function saySomething(clickCount)
     console.log(randomQuote);
   }
 }
+
 
 function AddNoise()
 {

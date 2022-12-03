@@ -21,6 +21,33 @@ body {
   /* background-color: lightblue; */
 }
 
+/* Text Bubble Speech*/
+.box {
+  width: 95%;
+  margin: 5px auto;
+  background: #00bfb6;
+  padding: 10px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 900;
+  color: #fff;
+  font-family: arial;
+  position:relative;
+}
+/* The triangle part of the Speech Bubble*/
+.sb1:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #00bfb6;
+  border-top: 10px solid #00bfb6;
+  border-bottom: 10px solid transparent;
+  right: 350px;
+  bottom: -19px;
+}
+
 /* I believe this is the button */
 #outputBlock {
   border: 2px solid dodgerblue;
