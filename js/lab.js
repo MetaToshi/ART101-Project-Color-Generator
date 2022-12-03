@@ -10,7 +10,7 @@ var colors_Num = (colorsBlocks.childNodes.length-1)/2; //How many colors are gen
 var h, s, l;
 var colorResult;
 
-var noiseRange = 3;
+var noiseRange = 5;
 var noise, tempHue, tempSat, tempLig;
 
 var clickCount = 0;
