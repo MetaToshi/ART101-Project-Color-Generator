@@ -12,7 +12,13 @@ p {
 }
 
 body {
-  background-color: lightblue;
+  /* background-color: lightblue; */
+  background-image: url(https://cdn.discordapp.com/attachments/1027993482289225869/1047208285746499594/Untitled-2.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  /* height: 1080px;
+  width: 1920px;/*
+  /* background-color: lightblue; */
 }
 
 /* I believe this is the button */
@@ -97,8 +103,8 @@ body {
 
 /* Roy Avatar */
 #roy {
-  width: 30%;
-  position: relative;
+  width: 25%;
+  position: sticky;
   float: right;
 }
 
@@ -114,7 +120,26 @@ body {
   display: table;
 }
 
-/* He do be jiggling */
+/* Slow text reveal for Roy's speech  (Doesnt work yet sadge)*/
+#quote {
+  color: black;
+}
+@keyframes animate {
+        0% {
+            width: 0px;
+            height: 0px;
+        }
+        30% {
+            width: 10px;
+            height: 10px;
+        }
+        60% {
+            width: 50px;
+            height: 80px;
+        }
+    }
+
+/* Roy shakes when mouse cursors over him - He do be jiggling */
 img:hover {
   animation: shake 0.5s;
   animation-iteration-count: infinite;

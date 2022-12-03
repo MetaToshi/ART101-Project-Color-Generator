@@ -2,6 +2,13 @@ var colorButton = $("#colorButton")[0]; //The button used to generate colors
 var colorsBlocks = $("#colors")[0]; //The color divs which show the random colors
 var colors_Num = (colorsBlocks.childNodes.length-1)/2; //How many colors are generated
 
+// Spotify
+//var client_id = 'CLIENT_ID'; // Your client id
+//var client_secret = 'CLIENT_SECRET'; // Your secret
+//var redirect_uri = 'REDIRECT_URI'; // Your redirect uri
+
+
+
 var h, s, l;
 var colorResult;
 
@@ -76,23 +83,29 @@ function royImageChange()
   //Clickcount & Change Roy image
   if(clickCount < 6)
   {
-    royImage.src = "img/normal happy.png";
+    royImage.src = "img/Roy_1_body_animated.gif";
   }
   else if(clickCount >= 6 && clickCount <= 12)
   {
-    royImage.src = "img/standing roy hehe.png";
+    royImage.src = "img/Roy_2_body_open.png";
   }
   else if(clickCount > 12 && clickCount <= 18)
   {
-    royImage.src = "img/frustrated.png";
+    royImage.src = "img/Roy_3_body_open.png";
+    //Animate Roy going left - blocking button
     $("#roy").animate({
-      right: '1000px',
+      right: '65%',
       duartion: 5
     });
   }
   else //When clickCount > 18
   {
-    royImage.src = "img/very angry.png";
+    royImage.src = "img/Roy_4_body_open.png";
+    //Animate Roy going Right - quitting his silly lil' job
+    $("#roy").animate({
+      left: '0%',
+      duartion: 0
+      });
   }
 }
 
