@@ -173,7 +173,7 @@ function getRandomColor(index) //Index means the index of colors
       console.log("colorResult: " + tempColorResult);
       break;
 
-    case 3: //Fourth color with different hue
+    case 3: //Fourth color with different hue, darker
 
       //Add hue
       var tempColorResult = "HSL(";
@@ -193,7 +193,7 @@ function getRandomColor(index) //Index means the index of colors
       console.log("colorResult: " + tempColorResult);
       break;
 
-    case 4: //Fifth color with different hue
+    case 4: //Fifth color with different hue, lighter
 
       //Add hue
       var tempColorResult = "HSL(";
