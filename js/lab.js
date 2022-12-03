@@ -95,11 +95,11 @@ function royImageChange()
   }
   else if(clickCount >= 6 && clickCount <= 12)
   {
-    royImage.src = "img/Roy_2_body_open.png";
+    royImage.src = "img/Roy_2_body_animated.gif";
   }
   else if(clickCount > 12 && clickCount <= 18)
   {
-    royImage.src = "img/Roy_3_body_open.png";
+    royImage.src = "img/Roy_3_body_animated.gif";
     //Animate Roy going left - blocking button
     $("#roy").animate({
       right: '65%',
@@ -108,7 +108,7 @@ function royImageChange()
   }
   else //When clickCount > 18
   {
-    royImage.src = "img/Roy_4_body_open.png";
+    royImage.src = "img/Roy_4_body_animated.gif";
     //Animate Roy going Right - quitting his silly lil' job
     $("#roy").animate({
       left: '0%',
