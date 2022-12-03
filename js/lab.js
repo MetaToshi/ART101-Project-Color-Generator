@@ -14,11 +14,10 @@ var colors_Num = (colorsBlocks.childNodes.length-1)/2; //How many colors are gen
 
 
 
+
+
 var h, s, l;
 var colorResult;
-
-var noiseRange = 3;
-var noise, tempHue, tempSat, tempLig;
 
 var clickCount = 0;
 
@@ -122,7 +121,6 @@ function getRandomColor(index) //Index means the index of colors
 {
   //Generate colors
   //The first base color is randomly generated
-
   switch(index)
   {
     case 0: //Randomly generate the first color as base color
@@ -153,32 +151,21 @@ function getRandomColor(index) //Index means the index of colors
         }
       }
       colorsBlocks.childNodes[2 * index + 1].style.backgroundColor = colorResult;
-
-      tempHue = h;
-      tempSat = s;
-      tempLig = l;
-
       console.log("colorResult: " + colorResult);
       break;
     case 1: //Scond color with the same hue, darker
 
-      //Add noise
-      if(clickCount >= 6)
-      {
-        AddNoise();
-      }
-
       //Add hue
       var tempColorResult = "HSL(";
-      tempColorResult += tempHue.toString();
+      tempColorResult += h.toString();
       tempColorResult += ", ";
 
       //Add saturation
-      tempColorResult += ((tempSat + 10 > 100) ? 100 : tempSat + 10).toString();
+      tempColorResult += ((s + 10 > 100) ? 100 : s + 10).toString();
       tempColorResult += "%, ";
 
       //Add lightness
-      tempColorResult += ((tempLig - 20 < 10) ? 10 : tempLig - 20).toString();
+      tempColorResult += ((l - 20 < 10) ? 10 : l - 20).toString();
       tempColorResult += "%)";
 
       //Assign the color
@@ -188,23 +175,17 @@ function getRandomColor(index) //Index means the index of colors
 
     case 2: //Third color with the same hue, lighter
 
-      //Add noise
-      if(clickCount >= 6)
-      {
-        AddNoise();
-      }
-
       //Add hue
       var tempColorResult = "HSL(";
-      tempColorResult += tempHue.toString();
+      tempColorResult += h.toString();
       tempColorResult += ", ";
 
       //Add saturation
-      tempColorResult += ((tempSat - 15 < 0) ? 0 : tempSat - 15).toString();
+      tempColorResult += ((s - 15 < 0) ? 0 : s - 15).toString();
       tempColorResult += "%, ";
 
       //Add lightness
-      tempColorResult += ((tempLig + 10 > 100) ? 100 : tempLig + 10).toString();
+      tempColorResult += ((l + 10 > 100) ? 100 : l + 10).toString();
       tempColorResult += "%)";
 
       //Assign the color
@@ -214,23 +195,17 @@ function getRandomColor(index) //Index means the index of colors
 
     case 3: //Fourth color with different hue, darker
 
-      //Add noise
-      if(clickCount >= 6)
-      {
-        AddNoise();
-      }
-
       //Add hue
       var tempColorResult = "HSL(";
-      tempColorResult += ((tempHue - 170 > 0) ? tempHue - 170 : tempHue + 190).toString();
+      tempColorResult += ((h - 170 > 0) ? h - 170 : h + 190).toString();
       tempColorResult += ", ";
 
       //Add saturation
-      tempColorResult += ((tempSat + 20 > 100) ? 100 : tempSat + 20).toString();
+      tempColorResult += ((s + 20 > 100) ? 100 : s + 20).toString();
       tempColorResult += "%, ";
 
       //Add lightness
-      tempColorResult += ((tempLig - 20 < 10) ? 10 : tempLig - 20).toString();
+      tempColorResult += ((l - 20 < 10) ? 10 : l - 20).toString();
       tempColorResult += "%)";
 
       //Assign the color
@@ -240,23 +215,17 @@ function getRandomColor(index) //Index means the index of colors
 
     case 4: //Fifth color with different hue, lighter
 
-      //Add noise
-      if(clickCount >= 6)
-      {
-        AddNoise();
-      }
-
       //Add hue
       var tempColorResult = "HSL(";
-      tempColorResult += ((tempHue - 170 > 0) ? tempHue - 170 : tempHue + 190).toString();
+      tempColorResult += ((h - 170 > 0) ? h - 170 : h + 190).toString();
       tempColorResult += ", ";
 
       //Add saturation
-      tempColorResult += ((tempSat - 7 > 0) ? tempSat - 7 : 0).toString();
+      tempColorResult += ((s - 7 > 0) ? s - 7 : 0).toString();
       tempColorResult += "%, ";
 
       //Add lightness
-      tempColorResult += ((tempLig + 8 > 100) ? 100 : tempLig + 8).toString();
+      tempColorResult += ((l + 8 > 100) ? 100 : l + 8).toString();
       tempColorResult += "%)";
 
       //Assign the color
@@ -340,96 +309,5 @@ function saySomething(clickCount)
     randomQuote = textLines.angryQuotes[randomNum].string;
     $("#quote").html(randomQuote);
     console.log(randomQuote);
-  }
-}
-
-function AddNoise()
-{
-  noise = clickCount;
-  tempHue = h;
-  tempSat = s;
-  tempLig = l;
-
-  var ifPositive = Math.random() < 0.5 ? -1 : 1;
-  noise *= Math.floor(Math.random() * noiseRange);
-  noise *= ifPositive;
-
-  while(noise > 360)
-  {
-    noise -= 360;
-  }
-
-  while(noise < 0)
-  {
-    noise += 360;
-  }
-
-  if(h + noise > 360)
-  {
-    tempHue = h + noise - 360;
-  }
-  else if(h + noise < 0)
-  {
-    tempHue = h + noise + 360;
-  }
-  else
-  {
-    tempHue = h + noise;
-  }
-
-  noise = clickCount;
-  ifPositive = Math.random() < 0.5 ? -1 : 1;
-  noise *= Math.floor(Math.random() * noiseRange);
-  noise *= ifPositive;
-
-  while(noise > 100)
-  {
-    noise -= 100;
-  }
-
-  while(noise < 0)
-  {
-    noise += 100;
-  }
-
-  if(s + noise > 100)
-  {
-    tempSat = s + noise - 100;
-  }
-  else if(h + noise < 0)
-  {
-    tempSat = s + noise + 100;
-  }
-  else
-  {
-    tempSat = s + noise;
-  }
-
-  noise = clickCount;
-  ifPositive = Math.random() < 0.5 ? -1 : 1;
-  noise *= Math.floor(Math.random() * noiseRange);
-  noise *= ifPositive;
-
-  while(noise > 100)
-  {
-    noise -= 100;
-  }
-
-  while(noise < 0)
-  {
-    noise += 100;
-  }
-
-  if(l + noise > 100)
-  {
-    tempLig = l + noise - 100;
-  }
-  else if(h + noise < 0)
-  {
-    tempLig = l + noise + 100;
-  }
-  else
-  {
-    tempLig = l + noise;
   }
 }
