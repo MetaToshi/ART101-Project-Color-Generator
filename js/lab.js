@@ -6,6 +6,19 @@ var colors_Num = (colorsBlocks.childNodes.length-1)/2; //How many colors are gen
 //var client_id = 'CLIENT_ID'; // Your client id
 //var client_secret = 'CLIENT_SECRET'; // Your secret
 //var redirect_uri = 'REDIRECT_URI'; // Your redirect uri
+<<<<<<< Updated upstream
+=======
+// window.onSpotifyIframeApiReady = (IFrameAPI) => {
+    //let element = document.getElementById('embed-iframe');
+    //let options = {
+      //uri: 'spotify:track:2aKLffhxIXpXyp3GLLTrjD'
+    //};
+    //let callback = (EmbedController) => {};
+    //IFrameAPI.createController(element, options, callback);
+
+//}
+
+>>>>>>> Stashed changes
 
 var h, s, l;
 var colorResult;
