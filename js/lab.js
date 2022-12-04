@@ -303,12 +303,12 @@ var textLines =
     { string: "Surely, this one will be the one! ~", speed: speeds.normal},
     { string: "This one is just ~calling~ your name!", speed: speeds.normal}],
   frustratedQuotes: [
-    { string: "Alright buddy, please decide on a color pallete soon. I have customers waiting...", speed: speeds.normal},
+    { string: "Alright buddy, please decide on a color palette soon. I have customers waiting...", speed: speeds.normal},
     { string: "I need to get to the next customer. Please pick one as soon as possible.", speed: speeds.normal},
     { string: "Look, I appreciate your adventurous spirit, but you need to choose a palette.", speed: speeds.normal},
     { string: "There's so many colors, surely you've found the right one by now?", speed: speeds.normal}],
   angryQuotes: [
-    { string: "We don't have that color in stock sir. Would you perhaps like to try again tomorrow?", speed: speeds.normal},
+    { string: "We don't have that color in stock sir. Would you like to try again tomorrow?", speed: speeds.normal},
     { string: "I'm going to have to ask you to leave the store.", speed: speeds.normal},
     { string: "Excuse me?! What did you say?!", speed: speeds.normal},
     { string: "...", speed: speeds.normal},

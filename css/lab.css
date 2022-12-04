@@ -13,10 +13,21 @@ p {
 
 body {
   /* background-color: lightblue; */
-  background-image: url(https://cdn.discordapp.com/attachments/230200713551020034/1048763218891386981/Background_Morgan.png);
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background-image: url(https://cdn.discordapp.com/attachments/230200713551020034/1048934685163651133/Background_TV_Morgan.png),
+  url(https://cdn.discordapp.com/attachments/230200713551020034/1048938821590462494/Background_Floor_Morgan1.png),
+  url(https://cdn.discordapp.com/attachments/230200713551020034/1048763218891386981/Background_Morgan.png);
+  background-repeat: no-repeat, no-repeat, repeat-y;
+  background-size: 35%, 100%, 100%;
+  background-position: left bottom
   /* background-color: lightblue; */
+}
+
+/* Roy Avatar */
+#roy {
+  width: 25%;
+  position: relative;
+  top: auto;
+  float: right;
 }
 
 /* Text Bubble Speech*/
@@ -28,6 +39,7 @@ body {
   border-radius: 15px;
   text-align: center;
   font-weight: 900;
+  opacity: 80%;
   color: #fff;
   font-family: arial;
   position:relative;
@@ -72,6 +84,7 @@ body {
   text-align: center;
   text-decoration: none;
   outline: none;
+  float: left;
   color: #fff;
   background-color: #4CAF50;
   border: none;
@@ -87,16 +100,7 @@ body {
   transform: translateY(4px);
 }
 
-#colors li {
-  padding: 8px 16px;
-  border-bottom: 1px solid black;
-}
-
-#colors li:last-child {
-  border-bottom: none;
-}
-
-#colorButton {
+.buttonbg {
   padding: 15px 25px;
   font-size: 24px;
   text-align: center;
@@ -109,35 +113,57 @@ body {
   box-shadow: 0 9px #999;
 }
 
+#colors li {
+  padding: 8px 16px;
+  border-bottom: 1px solid black;
+}
+
+#colors li:last-child {
+  border-bottom: none;
+}
+
+#colorButton {
+
+}
+
 .button:hover {background-color: #3e8e41}
 
 .button:active {
   background-color: #3e8e41;
-  box-shadow: 0 5px #666
+  /* box-shadow: 0 5px #666 */
   tranform: translateY(4px);
 }
 
-.bodyParagraphs {
+
+/* Pop-up red box*/
+.popupSpan {
+  position: 100px 100px;
+  float: left;
+  margin-left: 35px;
+  margin-top: 5px;
+  font-size: 25px;
+  font-family: monospace;
+  border: 3px solid darkred;
+  border-radius: 15px;
+  background-color: tomato;
+  height: 30px;
+  width: 500px;
+}
+
+.popupId {
   border: 3px solid tomato;
   padding: 15px 20px;
 }
 
+.bodyParagraphs {
+  margin: 45px 66px;
+  /* border: 3px solid tomato; */
+  padding: 15px 20px;
+  position: relative;
+}
+
 .bodyParagraphs h2 {
   margin: 15px 0px;
-}
-
-/* Roy Avatar */
-#roy {
-  width: 25%;
-  position: relative;
-  float: right;
-}
-
-/* TV */
-#tv {
-  width: 25%;
-  float: left;
-  position: sticky;
 }
 
 
@@ -156,17 +182,19 @@ body {
 /* Slow text reveal for Roy's speech  (Doesnt work yet sadge)*/
 #quote {
   color: black;
+  animation: reveal;
+  animation-iteration-count: 0.5s;
 }
-@keyframes animate {
-        0% {
+@keyframes transition {
+        0% {transition:
             width: 0px;
             height: 0px;
         }
-        30% {
+        30% {transition:
             width: 10px;
             height: 10px;
         }
-        60% {
+        60% {transition:
             width: 50px;
             height: 80px;
         }
