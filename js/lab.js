@@ -104,6 +104,10 @@ function royImageChange()
   }
   else if(clickCount > 18){ //When clickCount > 18
     royImage.src = "img/Roy_4_body_animated.gif";
+
+    }
+  else if(clickCount == 26){ //When clickCount > 18
+    royImage.src = "img/Roy_4_body_animated.gif";
     //Animate Roy going Right - quitting his silly lil' job
     $("#roy").animate({
       right: "-100%",
@@ -112,7 +116,8 @@ function royImageChange()
       $("#roy").hide();
     }, 5000) //Delays the hiding of Roy until he's stop moving
     }
-  }
+
+}
 
 //Generate random colors in color divs
 function getRandomColor(index) //Index means the index of colors
@@ -351,6 +356,14 @@ function saySomething(clickCount)
     randomQuote = textLines.quitsQuotes[randomNum].string;
     $("#quote").html(randomQuote);
     console.log(randomQuote);
+    //Animate Roy going Right - quitting his silly lil' job
+    $("#roy").animate({
+      right: "-100%",
+    }, 5000, "swing")
+    setTimeout(function (){
+      $("#roy").hide();
+    }, 5000) //Delays the hiding of Roy until he's stop moving
+
   }
 }
 
