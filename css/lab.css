@@ -13,11 +13,9 @@ p {
 
 body {
   /* background-color: lightblue; */
-  background-image: url(https://cdn.discordapp.com/attachments/1027993482289225869/1047208285746499594/Untitled-2.jpg);
+  background-image: url(ART101-Project-Color-Generator/img/Background_Morgan.png);
   background-repeat: no-repeat;
   background-size: 100%;
-  /* height: 1080px;
-  width: 1920px;/*
   /* background-color: lightblue; */
 }
 
@@ -25,7 +23,7 @@ body {
 .box {
   width: 95%;
   margin: 5px auto;
-  background: #00bfb6;
+  background: white;
   padding: 10px;
   border-radius: 15px;
   text-align: center;
@@ -34,8 +32,8 @@ body {
   font-family: arial;
   position:relative;
 }
-/* The triangle part of the Speech Bubble*/
-.sb1:before {
+/* The triangle part of the Speech Bubble - SCRAPPED*/
+/*.sb1:before {
   content: "";
   width: 0px;
   height: 0px;
@@ -46,7 +44,7 @@ body {
   border-bottom: 10px solid transparent;
   right: 350px;
   bottom: -19px;
-}
+} */
 
 /* I believe this is the button */
 #outputBlock {
@@ -135,6 +133,14 @@ body {
   float: right;
 }
 
+/* TV */
+#tv {
+  width: 25%;
+  float: left;
+  position: sticky;
+}
+
+
 .clearfix {
   border: 2px solid gold;
   padding: 5px 5px;
@@ -167,7 +173,7 @@ body {
     }
 
 /* Roy shakes when mouse cursors over him - He do be jiggling */
-img:hover {
+img:hover#roy{
   animation: shake 0.5s;
   animation-iteration-count: infinite;
 }
@@ -186,4 +192,24 @@ img:hover {
 
 * {
 	scrollbar-color: #8185b8e8 #000000ff !important;
+  }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+.popupDiv{
+  visibility: hidden;
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+}
+
+.popupDiv .show{
+  visibility: visible;
+  animation: fadeIn 1s;
 }

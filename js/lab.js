@@ -30,19 +30,16 @@ colorButton.onclick = function()
   for(let i = 0; i < colors_Num; i++)
   {
     getRandomColor(i);
-    royImageChange();
   }
-
+  royImageChange();
   //Using a random number to determine if Roy says something this time
 
   //ifSaySomethingNum represents the likelihood that Roy says something (eg. When ifSaySomethingNum is 8, it means the likelihood is 80%)
 
   var ifSaySomethingNum = Math.floor(Math.random() * 10);
-  console.log("ifSaySomethingNum: ", ifSaySomethingNum);
 
   if(ifSaySomethingNum < 8)
   {
-    console.log("Quote changing functions triggered!");
     saySomething(clickCount);
   }
 
@@ -117,7 +114,7 @@ function royImageChange()
   }
 }
 
-//Change Roy's image & Generate random colors in color divs
+//Generate random colors in color divs
 function getRandomColor(index) //Index means the index of colors
 {
   //Generate colors
@@ -276,7 +273,8 @@ function copyColor(colorId)
   // Print the copied color
   if(colorInfo.length != 0)
   {
-    console.log("Copied the color: " + colorInfo);
+    $("#popupId").html("Copy the color: " + colorInfo);
+    $("#popupId").toggleClass("show");
   }
 }
 
@@ -284,28 +282,34 @@ function copyColor(colorId)
 var speeds =
 {
   slow: 120,
-  normal: 700,
+  normal: 200,
   fast: 300
 }
 
 var textLines =
 {
   happyQuotes:[
-    { string: "Roy Happy Quote 1", speed: speeds.normal},
-    { string: "Roy Happy Quote 2", speed: speeds.slow},
-    { string: "Roy Happy Quote 3", speed: speeds.fast}],
+    { string: "I think this color palette fits your style!", speed: speeds.normal},
+    { string: "One for the grandma!~", speed: speeds.slow},
+    { string: "What do you think? Great, isn't it?", speed: speeds.fast},
+    { string: "Look at that palette! Isn't it beautiful?", speed: speeds.fast}],
   heheQuotes: [
-    { string: "Roy Hehe Quote 1", speed: speeds.normal},
-    { string: "Roy Hehe Quote 2", speed: speeds.normal},
-    { string: "Roy Hehe Quote 3", speed: speeds.normal}],
+    { string: "Still deciding huh? I'm sure this one will sell you!", speed: speeds.normal},
+    { string: "Surely, this one will be the one! ~", speed: speeds.normal},
+    { string: "This one is just ~calling~ your name!", speed: speeds.normal}],
   frustratedQuotes: [
-    { string: "Roy frustrated Quote 1", speed: speeds.normal},
-    { string: "Roy frustrated Quote 2", speed: speeds.normal},
-    { string: "Roy frustrated Quote 3", speed: speeds.normal}],
+    { string: "Alright buddy, please decide on a color pallete soon. I have customers waiting...", speed: speeds.normal},
+    { string: "I need to get to the next customer. Please pick one as soon as possible.", speed: speeds.normal},
+    { string: "Look, I appreciate your adventurous spirit, but you need to choose a palette.", speed: speeds.normal},
+    { string: "There's so many colors, surely you've found the right one by now?", speed: speeds.normal}],
   angryQuotes: [
-    { string: "Roy angry Quote 1", speed: speeds.normal},
-    { string: "Roy angry Quote 2", speed: speeds.normal},
-    { string: "Roy angry Quote 3", speed: speeds.normal}]
+    { string: "We don't have that color in stock sir. Would you perhaps like to try again tomorrow?", speed: speeds.normal},
+    { string: "I'm going to have to ask you to leave the store.", speed: speeds.normal},
+    { string: "Excuse me?! What did you say?!", speed: speeds.normal},
+    { string: "...", speed: speeds.normal},
+    { string: "Please, I need to get to the next customer.", speed: speeds.normal}],
+  quitsQuotes: [
+    { string: "I'm not paid enough to do this crap.", speed: speeds.normal}]
 }
 
 //The function used to change what does Roy say
@@ -334,10 +338,17 @@ function saySomething(clickCount)
     $("#quote").html(randomQuote);
     console.log(randomQuote);
   }
-  else //Angry Roy says something
+  else if(clickCount > 18 && clickCount <= 24) //Angry Roy says something
   {
     var randomNum = Math.floor(Math.random() * textLines.angryQuotes.length);
     randomQuote = textLines.angryQuotes[randomNum].string;
+    $("#quote").html(randomQuote);
+    console.log(randomQuote);
+  }
+  else //Roy Rages and Walks away
+  {
+    var randomNum = Math.floor(Math.random() * textLines.quitsQuotes.length);
+    randomQuote = textLines.quitsQuotes[randomNum].string;
     $("#quote").html(randomQuote);
     console.log(randomQuote);
   }
