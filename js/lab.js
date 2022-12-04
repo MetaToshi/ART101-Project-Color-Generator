@@ -100,19 +100,19 @@ function royImageChange()
     //Animate Roy going left - blocking button
     $("#roy").animate({
       right: '65%',
-      duartion: 5
     });
   }
-  else //When clickCount > 18
-  {
+  else if(clickCount > 18){ //When clickCount > 18
     royImage.src = "img/Roy_4_body_animated.gif";
     //Animate Roy going Right - quitting his silly lil' job
     $("#roy").animate({
-      left: '0%',
-      duartion: 0
-      });
+      right: "-100%",
+    }, 5000, "swing")
+    setTimeout(function (){
+      $("#roy").hide();
+    }, 5000) //Delays the hiding of Roy until he's stop moving
+    }
   }
-}
 
 //Generate random colors in color divs
 function getRandomColor(index) //Index means the index of colors
