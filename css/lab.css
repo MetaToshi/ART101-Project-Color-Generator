@@ -17,9 +17,9 @@ body {
   background-image: /* url(https://cdn.discordapp.com/attachments/230200713551020034/1048934685163651133/Background_TV_Morgan.png), */
   /* url(https://cdn.discordapp.com/attachments/230200713551020034/1048938821590462494/Background_Floor_Morgan1.png), */
   url(https://cdn.discordapp.com/attachments/230200713551020034/1048763218891386981/Background_Morgan.png);
-  background-repeat: no-repeat, no-repeat, repeat-y;
-  background-size: 100%, 100%, 100%;
-  background-position: left bottom;
+  background-repeat: repeat-y;
+  background-size: 100%;
+  /* background-position: left bottom; */
   /* background-color: lightblue; */
 }
 
@@ -74,7 +74,6 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 350px;
   border: 1px solid black;
   overflow: auto;
   text-align: center;
@@ -241,6 +240,7 @@ img:hover#roy{
   text-align: center;
   border-radius: 6px;
   padding: 8px 0;
+  z-index: 10;
 }
 
 .popupDiv .show{
@@ -249,19 +249,36 @@ img:hover#roy{
 }
 
 .container{
-    width: 500px;
-    height: 500px;
+    width: 300px;
+    height: 200px;
     position: relative;
     margin: 20px;
 }
-.testbox{
-    width: 80%;
-    height: 90%;
+.tv_box{
+    width: 120%;
     position: absolute;
     top: 0;
-    left: 0;
+    left: -32px;
 }
-.stack-top{
+.color_list{
     z-index: 2;
     margin: 20%;
-    top: 40%;
+    top: 49%;
+    position: absolute;
+    height: 89%;
+    width: 84%;
+    left: 9%;
+}
+.rectangle {
+  height: 2000px;
+  width: 3000px;
+  background-color: #555;
+  z-index: -10;
+  position: relative;
+  margin-left: -300px;
+
+}
+
+/* #ground {
+    z-index: -10;
+} */
