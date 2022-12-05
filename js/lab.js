@@ -102,19 +102,22 @@ function royImageChange()
       right: '65%',
     });
   }
-  else if(clickCount > 18){ //When clickCount > 18
+  else if(clickCount > 18 && clickCount <= 24){ //When clickCount > 18
     royImage.src = "img/Roy_4_body_animated.gif";
 
     }
-  else if(clickCount == 26){ //When clickCount > 18
-    royImage.src = "img/Roy_4_body_animated.gif";
+  else if(clickCount == 25){ //When clickCount > 18
+    royImage.src = "img/Roy_4_body_deflate.gif";
     //Animate Roy going Right - quitting his silly lil' job
     $("#roy").animate({
       right: "-100%",
     }, 5000, "swing")
     setTimeout(function (){
+        royImage.src = "img/Roy_4_body_deflate.png"
+    }, 1000)
+    setTimeout(function (){
       $("#roy").hide();
-    }, 5000) //Delays the hiding of Roy until he's stop moving
+    }, 2500) //Delays the hiding of Roy until he's stop moving
     }
 
 }
@@ -356,14 +359,6 @@ function saySomething(clickCount)
     randomQuote = textLines.quitsQuotes[randomNum].string;
     $("#quote").html(randomQuote);
     console.log(randomQuote);
-    //Animate Roy going Right - quitting his silly lil' job
-    $("#roy").animate({
-      right: "-100%",
-    }, 5000, "swing")
-    setTimeout(function (){
-      $("#roy").hide();
-    }, 5000) //Delays the hiding of Roy until he's stop moving
-
   }
 }
 
