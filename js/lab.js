@@ -94,6 +94,7 @@ function royImageChange()
   {
     royImage.src = "img/Roy_2_body_animated.gif";
   }
+
   else if(clickCount > 12 && clickCount <= 18)
   {
     royImage.src = "img/Roy_3_body_animated.gif";
@@ -102,23 +103,25 @@ function royImageChange()
       right: '65%',
     });
   }
-  else if(clickCount > 18 && clickCount <= 24){ //When clickCount > 18
-    royImage.src = "img/Roy_4_body_animated.gif";
 
-    }
-  else if(clickCount == 25){ //When clickCount > 18
-    royImage.src = "img/Roy_4_body_deflate.gif";
+  else if(clickCount > 18 && clickCount <= 24){ //When clickCount >= 18 but <= 24; Roy Stage 4
+    royImage.src = "img/Roy_4_body_animated.gif";
+  }
+
+  else if(clickCount == 25){ //When clickCount == 25; Roy Final Stage
+    royImage.src = "img/Roy_4_body_deflate_resize.gif";
     //Animate Roy going Right - quitting his silly lil' job
     $("#roy").animate({
       right: "-100%",
     }, 5000, "swing")
+    //Timeouts to act as keyframes essentialaly, pausing until Roy has moved off screen
     setTimeout(function (){
         royImage.src = "img/Roy_4_body_deflate.png"
-    }, 1000)
+      }, 1000)
     setTimeout(function (){
       $("#roy").hide();
-    }, 2500) //Delays the hiding of Roy until he's stop moving
-    }
+    }, 2600) //Delays the hiding of Roy until he stops moving
+  }
 
 }
 
