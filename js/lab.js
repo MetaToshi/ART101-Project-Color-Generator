@@ -100,7 +100,7 @@ function royImageChange()
     royImage.src = "img/Roy_3_body_animated.gif";
     //Animate Roy going left - blocking button
     $("#roy").animate({
-      right: '65%',
+      right: '48%',
     });
   }
 
@@ -109,18 +109,21 @@ function royImageChange()
   }
 
   else if(clickCount == 25){ //When clickCount == 25; Roy Final Stage
-    royImage.src = "img/Roy_4_body_deflate_resize.gif";
     //Animate Roy going Right - quitting his silly lil' job
     $("#roy").animate({
       right: "-100%",
-    }, 5000, "swing")
+      opacity: "0"
+    }, 4000, "swing")
     //Timeouts to act as keyframes essentialaly, pausing until Roy has moved off screen
-    setTimeout(function (){
-        royImage.src = "img/Roy_4_body_deflate.png"
-      }, 1000)
     setTimeout(function (){
       $("#roy").hide();
     }, 2600) //Delays the hiding of Roy until he stops moving
+    setTimeout(function (){
+      $("#roy").show()
+      $("#roy").animate({
+        right: "0%",
+      }, 0)
+    }, 2610) //Delays the hiding of Roy until he stops moving
   }
 
 }
